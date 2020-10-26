@@ -1,0 +1,17 @@
+<div mat-dialog-content class="dialog-content">
+    <p>Actualizeaza categoria</p>
+        <mat-form-field appearance="standard">
+            <mat-label>Nume</mat-label>
+            <input matInput [(ngModel)]="data?.category.name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Descriere</mat-label>
+            <input matInput [(ngModel)]="data?.category.description">
+        </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button (click)="onNoClick()">Renunta</button>
+    <button mat-stroked-button (click)="updateCategory()">Actualizeaza</button>
+</div>

@@ -1,0 +1,39 @@
+.admin-section{
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+.tabs{
+    width: 100%;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+
+    color: white;
+    text-align: center;
+}
+
+.card {
+    margin-top: 10px;
+    width: 400px;
+  }
+  
+.add-btn{
+    justify-content: center;
+ }
+
+ .mat-action-row{
+     justify-content: space-evenly;
+ }
+
+ .mat-form-field{
+     width: 300px;
+ }

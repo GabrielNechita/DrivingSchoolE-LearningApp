@@ -1,0 +1,19 @@
+<div mat-dialog-content class="dialog-content">
+    <p>Adauga o categorie noua</p>
+    <form [formGroup]="addForm" class="form">
+
+        <mat-form-field appearance="standard">
+            <mat-label>Nume</mat-label>
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="standard">
+            <mat-label>Descriere</mat-label>
+            <input matInput formControlName="description">
+        </mat-form-field>
+        
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button (click)="onNoClick()">Renunta</button>
+    <button mat-stroked-button [disabled]="!addForm.valid" (click)="addCategory()">Adauga categoria</button>
+</div>

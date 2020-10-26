@@ -1,0 +1,28 @@
+.resource-section{
+    padding-top: 70px;
+    padding-bottom: 55px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item{
+    color: white;
+    text-align: center;
+}
+
+.card {
+    margin-top: 10px;
+    width: 400px;
+  }
+
+app-footer{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    
+}

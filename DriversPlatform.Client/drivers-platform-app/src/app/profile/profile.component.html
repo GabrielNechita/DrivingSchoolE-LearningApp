@@ -1,0 +1,17 @@
+<div class="container">
+    <section>
+        <app-menu></app-menu>
+    </section>
+    
+    <section>
+        <app-driver-profile *ngIf="isGoodRole('driver')"></app-driver-profile>
+        <app-admin-profile *ngIf="isGoodRole('admin')"></app-admin-profile>
+        <app-instructor-profile *ngIf="isGoodRole('instructor')"></app-instructor-profile>
+    </section>
+    
+    <section>
+        <app-footer></app-footer>
+    </section>
+    
+</div>
+

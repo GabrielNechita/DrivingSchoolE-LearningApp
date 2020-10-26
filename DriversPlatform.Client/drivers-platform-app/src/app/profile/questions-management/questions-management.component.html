@@ -1,0 +1,46 @@
+<mat-card class="card">
+    <p>Cauta intrebare:</p>
+    <div>
+        <span>
+            <mat-form-field class="search">
+                <mat-label>Cauta</mat-label>
+                <input matInput [(ngModel)]="searchText">
+            </mat-form-field>
+    
+            <button mat-stroked-button color="primary" (click)="searchQuestion()">Cauta</button>
+        </span>
+    </div>
+    
+    
+    <mat-accordion class="expansion">
+        <mat-expansion-panel *ngFor="let question of questions" (afterExpand)="selectedQuestion = question">
+        <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title >
+                <div class="title">
+                    {{question?.value}}
+                </div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card *ngIf="question.image">
+            <img src="data:image/png;base64,{{question.image}}"
+                width="250"
+                height="200" />
+        </mat-card>
+        <p> Categorie: {{question?.category.name}} </p>
+        <p> Dificultate: {{question?.difficulty}} </p>
+        <p> Variante de raspuns: </p>
+        <p *ngFor="let answer of question?.answers" 
+            [ngClass]="{'correctAnswer' : answer.isCorrect, 'wrongAnswer' : !answer.isCorrect}"> 
+            {{answer.value}} 
+        </p>
+        <mat-action-row class="centre-btn">
+            <button mat-stroked-button color="warn" (click)="deleteQuestion()">Sterge intrebarea</button>
+        </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+    <mat-action-row class="centre-btn">
+        <button mat-stroked-button color="primary" (click)="addQuestion()">Adauga intrebare noua</button>
+    </mat-action-row>
+
+</mat-card>

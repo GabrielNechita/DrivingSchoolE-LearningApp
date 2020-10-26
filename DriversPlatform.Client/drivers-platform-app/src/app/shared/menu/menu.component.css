@@ -1,0 +1,56 @@
+.toolbar{
+    display:flex;
+    position: fixed;
+    justify-content: space-between;
+    top: 0;
+    height: 70px;
+}
+.mat-button{
+    font-size: large;
+}
+.title{
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.login_btn{
+    color: navy;
+}
+.login_btn:hover{
+    background-color: skyblue;
+}
+.side-nav-left {
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+}
+
+.side-nav-content {
+    z-index: 1002;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: calc(100% - 60px);
+    padding: 30px;
+    overflow: auto;
+    overflow-y: none;
+    box-shadow: 0 2px 14px 0 rgba(130, 130, 130, 0.5);
+    background: #FFF;
+    color: #555555 !important;
+}
+
+.backdrop {
+    position: fixed !important;
+    z-index: 1001;
+    height: 100%;
+    width: 100%;
+}
+
+.mat-drawer {
+    box-shadow: unset !important;
+}
+

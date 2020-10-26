@@ -1,0 +1,68 @@
+<div class="instructor-section">
+  
+  <mat-tab-group class="tabs" mat-align-tabs="center">
+    <mat-tab label="Date personale">
+    <ul class="container">
+          <li class="item">
+
+              <mat-card class="card">
+                  <mat-card-header>
+                    <div mat-card-avatar class="header-image" *ngIf="pictureUrl" [ngStyle]="{'background-image':'url('+pictureUrl+')'}"></div>
+                    <div mat-card-avatar class="header-image" *ngIf="!pictureUrl" [ngStyle]="{'background-image':'url('+defaultUrl+')'}"></div>
+                    <mat-card-title>{{instructor?.user.lastName}} {{instructor?.user.firstName}}</mat-card-title>
+                    <mat-card-subtitle>Categorii: 
+                      <span *ngFor="let category of instructor?.categories"> {{category?.name}}</span> 
+                    </mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <p>Date personale:</p>
+                      <mat-list>
+                          <mat-list-item>Email: {{instructor?.user.email}}</mat-list-item>
+                          <mat-list-item>Adresa: {{instructor?.user.address}}</mat-list-item>
+                          <mat-list-item>Telefon: {{instructor?.user.phoneNumber}}</mat-list-item>
+                          <mat-list-item>Zi de nastere: {{instructor?.user.birthday | date:'dd.MM.yyyy'}}</mat-list-item>
+                          <mat-divider></mat-divider>
+                      </mat-list>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <button mat-raised-button (click)="updateInstructor()">Actualizare</button>
+                  </mat-card-actions>
+                </mat-card>
+          </li>         
+      </ul>
+    </mat-tab>
+    <mat-tab label="Clienti">
+      <ul class="container">
+        <li class="item">
+            <mat-card class="card">
+                <mat-accordion class="expansion">
+                    <mat-expansion-panel *ngFor="let client of instructor?.clients" (afterExpand)="selectedClient = client">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                        <p> {{client?.user.lastName}}  {{client?.user.firstName}} </p>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <p> Email: {{client?.user.email}} </p>
+                    <p> Telefon: {{client?.user.phoneNumber}} </p>
+                    <p> Adresa: {{client?.user.address}} </p>
+                    <p> Zi de nastere: {{client?.user.birthday | date:'dd.MM.yyyy'}} </p>
+                    
+                    <button mat-stroked-button [disabled]="client.hasQuizAccess" (click)="giveQuizAccess(client.id)">Acces chestionare</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-card>
+        </li>   
+    </ul>
+    </mat-tab>
+    <mat-tab label="Intrebari chestionare">
+      <ul class="container">
+        <li class="item">
+          <app-questions-management></app-questions-management>
+        </li>
+      </ul>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+      
+

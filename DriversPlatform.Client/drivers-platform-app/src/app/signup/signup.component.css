@@ -1,0 +1,55 @@
+.container{
+    flex-direction: column;
+}
+.menu{
+    display:flex;
+    justify-content: space-between;
+}
+
+.x_btn{ 
+    width: 60px !important;
+    height: 60px !important;
+    font-size: xx-large ;
+    font-weight: 100;
+    color: grey;
+    margin-right: 40px;
+    
+}
+
+.logo{
+    margin-left: 20px;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+h1{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #243a4b;
+    font-size: 55px;
+    text-align: center;
+}
+.new-user{
+    text-align: center;
+    font-size: larger;
+    font-weight: 400;
+    color: #243a4b;
+}
+
+a{
+    color: rgb(6, 111, 248);
+}
+
+.signup-form{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.mat-form-field{
+    width: 400px;
+}
+
+.form-btns{
+    margin-top: 20px;
+}

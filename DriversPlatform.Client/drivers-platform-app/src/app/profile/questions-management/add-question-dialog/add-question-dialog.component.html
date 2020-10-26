@@ -1,0 +1,48 @@
+<div mat-dialog-content class="dialog-content">
+  <p>Adauga o intrebare noua</p>
+  <mat-form-field appearance="standard">
+    <mat-label>Intrebare</mat-label>
+    <input matInput [formControl]="questionValue" required>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Dificultate</mat-label>
+    <mat-select [(value)]="difficulty" required>
+      <mat-option value="easy">Easy</mat-option>
+      <mat-option value="medium">Medium</mat-option>
+      <mat-option value="hard">Hard</mat-option>
+    </mat-select>
+  </mat-form-field> 
+  <mat-form-field>
+    <ngx-mat-file-input 
+      placeholder="Adauga poza"
+      accept="image/*"
+      (change)="uploadFileOnChange($event)">
+    </ngx-mat-file-input>
+    <mat-icon matSuffix>insert_photo</mat-icon>
+  </mat-form-field>
+  <p> Selectati categoria intrebarii:*</p>          
+  <mat-selection-list  [(ngModel)]="selectedCategory" color="primary" [multiple]="false">
+    <mat-list-option *ngFor="let category of data.categories" [value]="category">
+      {{category.name}}
+    </mat-list-option>
+  </mat-selection-list>   
+  <p>Introduceti cate raspunsuri are inrebarea</p>
+  <mat-form-field appearance="standard">
+    <mat-label>Nr. raspunsuri</mat-label>
+    <input matInput type="number" [(ngModel)]="numberOfAnswers" (change)="setNumber()" required>
+  </mat-form-field>
+  <div *ngFor='let number of numbers'>
+    <mat-form-field appearance="standard">
+      <mat-label>Raspunsul {{number + 1}}</mat-label>
+      <input matInput [formControl]="answersValues[number]" required>
+    </mat-form-field>
+    <mat-radio-group color="primary" [formControl]="asnwersIsCorrectValue[number]">
+      <mat-radio-button class="radio" value=true>Corect</mat-radio-button>
+      <mat-radio-button value=false>Gresit </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button (click)="onNoClick()">Renunta</button>
+    <button mat-stroked-button [disabled]="!formIsValid()" (click)="addQuestion()">Adauga intrebare</button>
+</div>

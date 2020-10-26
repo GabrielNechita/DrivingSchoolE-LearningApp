@@ -1,0 +1,27 @@
+<div>
+    <section>
+        <app-menu></app-menu>
+    </section>
+    
+    <section>
+        <div class="resource-section">
+            <ul class="container">
+                <li class="item">
+                    <mat-card class="card">
+                        <mat-card-title>Lista Resurse PDF:</mat-card-title>
+                        <mat-selection-list [multiple]="false">
+                            <mat-list-option *ngFor="let resource of resources" [value]="resource" (click)="openFile(resource)">
+                              {{resource.name}}
+                            </mat-list-option>
+                          </mat-selection-list>
+                    </mat-card>
+                </li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <app-footer></app-footer>
+    </section>
+    
+</div>

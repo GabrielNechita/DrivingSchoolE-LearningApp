@@ -1,0 +1,34 @@
+.about-section{
+    padding-top: 60px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+
+    color: white;
+    text-align: center;
+}
+.card {
+    width: 400px;
+}
+
+h1{
+    text-align: center;
+        
+}
+
+.mission-text{
+    font-size: larger;
+}
+  app-footer{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    
+}

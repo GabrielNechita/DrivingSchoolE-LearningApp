@@ -1,0 +1,27 @@
+
+.contact-section{
+    padding-top: 100px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+
+    color: white;
+    text-align: center;
+}
+.card {
+    width: 400px;
+}
+
+app-footer{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    
+}

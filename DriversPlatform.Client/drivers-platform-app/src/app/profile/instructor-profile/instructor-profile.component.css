@@ -1,0 +1,26 @@
+.instructor-section{
+    padding-top: 70px;
+    padding-bottom: 55px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+    color: white;
+    text-align: center;
+}
+
+.card {
+    margin-top: 10px;
+    width: 400px;
+  }
+  
+
+.header-image{
+    background-size: cover;
+}

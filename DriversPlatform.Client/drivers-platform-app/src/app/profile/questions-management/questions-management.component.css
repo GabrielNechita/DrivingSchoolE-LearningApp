@@ -1,0 +1,33 @@
+.card {
+    margin-top: 10px;
+    width: 400px;
+  }
+  
+
+.radio{
+    margin-right: 15px;
+    
+}
+
+.search{
+    margin-right: 10px;
+    width: 300px;
+}
+
+.centre-btn{
+    justify-content: center;
+ }
+
+ .correctAnswer{
+     color: green;
+     font-weight: bolder;
+ }
+
+ .wrongAnswer{
+     color: red;
+     font-weight: bolder;
+ }
+
+.expansion-header{
+    height: 100px;
+}

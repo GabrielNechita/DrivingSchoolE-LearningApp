@@ -1,0 +1,68 @@
+<div mat-dialog-content class="dialog-content">
+    <p>Actualizeaza cont</p>
+        <mat-form-field appearance="standard">
+            <mat-label>Nume</mat-label>
+            <input matInput [(ngModel)]="data?.instructor?.user.lastName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Prenume</mat-label>
+            <input matInput [(ngModel)]="data?.instructor?.user.firstName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" *ngIf="isAdmin">
+            <mat-label>Gen</mat-label>
+            <mat-select [(ngModel)]="data?.instructor?.user.gender" placeholder="Gen" required>
+              <mat-option value="male">Masculin</mat-option>
+              <mat-option value="female">Feminin</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Adresa</mat-label>
+            <input matInput [(ngModel)]="data?.instructor?.user.address" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard">
+            <mat-label>Data nasterii</mat-label>
+            <input matInput type="datetime" [matDatepicker]="picker" [(ngModel)]="data?.instructor?.user.birthday" (click)="picker.open()" required>
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Numar telefon</mat-label>
+            <input matInput [(ngModel)]="data?.instructor?.user.phoneNumber" required>
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error>Numarul incepe cu 07 si are 10 cifre in total</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="isAdmin">
+            <mat-label>Salar</mat-label>
+            <input matInput type="number" [(ngModel)]="data?.instructor.salary">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" *ngIf="isAdmin">
+            <mat-label>Data angajarii</mat-label>
+            <input matInput type="datetime" [matDatepicker]="picker2" [(ngModel)]="data?.instructor.hireDate" (click)="picker2.open()" required>
+            <mat-datepicker-toggle matSuffix [for]="picker2">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+    <p *ngIf="isAdmin">Selecteaza categoriile:</p>
+    <div>
+        <mat-selection-list  [(ngModel)]="categoryList" color="primary">
+            <mat-list-option *ngFor="let category of data?.categories" [value]="category" [selected]="compareCat(category)">
+              {{category.name}}
+            </mat-list-option>
+        </mat-selection-list>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button (click)="onNoClick()">Renunta</button>
+    <button mat-stroked-button (click)="updateInstructor()">Actualizeaza</button>
+  </div>

@@ -1,0 +1,83 @@
+<div class="container">
+    <section>
+        <app-menu></app-menu>
+    </section>
+    
+    <section>
+        <div class="quiz-section">
+              <ul class="ul-container">
+                  <li class="item">
+                    <mat-card class="card">
+                        <div *ngIf="showIntro">
+                            <mat-card-content>
+                                <p *ngIf='hasAccess'>
+                                    Alege setarile pentru a genera un chestionar 
+                                    pentru categoria {{driver?.category.name}}
+                                </p>
+                                <p *ngIf='!hasAccess'>
+                                    Pentru a genera chestionare va trebui sa alegi o categorie si 
+                                    un instructor din pagina Profil si sa primesti accesul de la instructorul tau
+                                </p>
+                                <div *ngIf='hasAccess'>
+                                    <p>
+                                        Selecteaza dificultatea:
+                                        <mat-form-field appearance="standard">
+                                            <mat-select [(value)]="difficulty" required>
+                                            <mat-option value="easy">Easy</mat-option>
+                                            <mat-option value="medium">Medium</mat-option>
+                                            <mat-option value="hard">Hard</mat-option>
+                                            <mat-option value="mix">Mix</mat-option>
+                                            </mat-select>
+                                        </mat-form-field> 
+                                    </p>
+                                    <button mat-stroked-button (click)="generateQuiz()">Genereaza chestionar</button>
+                                </div>
+                            </mat-card-content>    
+                        </div>
+                        <div *ngIf="!showIntro" class="questions-class">
+                            <div *ngIf="!quizIsOver && quiz?.length != 0">
+                                <mat-card-title *ngIf="quiz">
+                                    Intrebarea {{questionNumber + 1}}: 
+                                    {{quiz[questionNumber]?.value}}
+                                </mat-card-title>
+                                <mat-card-content>
+                                    <mat-card *ngIf="quiz[questionNumber]?.image">
+                                        <img src="data:image/png;base64,{{quiz[questionNumber]?.image}}"
+                                            width="250"
+                                            height="200" />
+                                    </mat-card>
+                                    <div>
+                                        <mat-selection-list *ngIf="quiz"  [(ngModel)]="selectedAnswers" color="primary" [disabled]="showCorrectAnswers">
+                                            <mat-list-option 
+                                                [ngClass]="{'correctAnswer' : answer.isCorrect && showCorrectAnswers, 'wrongAnswer' : !answer.isCorrect && showCorrectAnswers}"
+                                                *ngFor="let answer of quiz[questionNumber]?.answers" 
+                                                [value]="answer">
+                                              {{answer.value}}
+                                            </mat-list-option>
+                                        </mat-selection-list>
+                                    </div>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-stroked-button *ngIf="!showCorrectAnswers" (click)="showCorrect()">Trimite raspunsul</button>
+                                    <button mat-stroked-button *ngIf="showCorrectAnswers" (click)="nextQuestion()">Urmatoarea intrebare</button>
+                                </mat-card-actions>
+                            </div>     
+                            <div *ngIf="quizIsOver">
+                                <p>Chestionarul s-a terminat</p>
+                                <p>Ai raspuns corect la {{score}} intrebari</p>
+                            </div>
+                            <div *ngIf="quiz?.length == 0">
+                                <p>Momentan nu exista intrebari pentru acest tip de chestionar.</p>
+                            </div>
+                        </div> 
+                    </mat-card>
+                  </li>
+              </ul>
+        </div>
+    </section>
+    
+    <section>
+        <app-footer></app-footer>
+    </section>
+    
+</div>

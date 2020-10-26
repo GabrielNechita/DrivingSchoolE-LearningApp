@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="menu">
+        <div>
+            <span class="logo">A Driving Ace</span>
+        </div>
+        
+        <div class="clear">
+            <button mat-icon-button class="x_btn" routerLink="/"> X </button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="title">
+        <h1>Log In</h1>
+    </div>
+    <div class="new-user">
+        <span> Nu aveti cont? </span>
+        <a class="sign-up" routerLink="/signup">Sign Up </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="login-form">
+        <div>
+            <mat-form-field appearance="standard" [hideRequiredMarker]="true">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="example@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="standard" [hideRequiredMarker]="true">
+                <mat-label>Parola</mat-label>
+                <input matInput 
+                         [type]="hidePass ? 'password' : 'text'" 
+                         [formControl]="password" required>
+                <button mat-icon-button matSuffix (click)="hidePass = !hidePass">
+                    <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.invalid">Minim 6 caractere, o litera mare, o litera mica, un caracter special</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-btns">
+            <button mat-raised-button color="primary" id="login-btn" (click)="login()">Log In</button>
+            <!-- <button mat-button id="reset" (click)="resetPass()">Ai uitat parola?</button> -->
+        </div>    
+    </div>
+</div>

@@ -1,0 +1,12 @@
+.homePic{
+    width: 100%;
+    height: 576px;
+}
+
+.welcome-text{
+    position: relative;
+    text-align: center;
+    color: rgb(29, 36, 133);
+    text-shadow: 0 0 2px #ffff;
+    
+}

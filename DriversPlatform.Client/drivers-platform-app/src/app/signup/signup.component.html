@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="menu">
+        <div>
+            <span class="logo">A Driving Ace</span>
+        </div>
+        
+        <div class="clear">
+            <button mat-icon-button class="x_btn" routerLink="/"> X </button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="title">
+        <h1>Sign Up</h1>
+    </div>
+    <div class="new-user">
+        <span> Aveti cont? Apasati </span>
+        <a class="login" routerLink="/login">Log In </a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="signup-form">
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Prenume</mat-label>
+                <input matInput [formControl]="firstName" required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Nume</mat-label>
+                <input matInput [formControl]="lastName" required>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Adresa</mat-label>
+                <input matInput [formControl]="address" required>
+            </mat-form-field>
+        </div>
+
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Data nasterii</mat-label>
+                <input matInput [max]="currentDate" [matDatepicker]="picker" [formControl]="birthDate" (click)="picker.open()" required>
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Gen</mat-label>
+                <mat-select [(value)]="selectedGender" placeholder="Gen" required>
+                  <mat-option value="male">Masculin</mat-option>
+                  <mat-option value="female">Feminin</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Numar telefon</mat-label>
+                <input matInput [formControl]="phone" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="phone.invalid">Numarul incepe cu 07 si are 10 cifre in total</mat-error>
+            </mat-form-field>
+        </div>
+        
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">Email invalid</mat-error>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Parola</mat-label>
+                <input matInput 
+                         [type]="hidePass ? 'password' : 'text'" 
+                         [formControl]="password" required>
+                <button mat-icon-button matSuffix (click)="hidePass = !hidePass">
+                    <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.invalid">Minim 6 caractere, o litera mare, o litera mica, un caracter special</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Confirma Parola</mat-label>
+                <input matInput 
+                         [type]="hidePassConf ? 'password' : 'text'" 
+                         [formControl]="passwordConfirm" required>
+                <button mat-icon-button matSuffix (click)="hidePassConf = !hidePassConf">
+                    <mat-icon>{{hidePassConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="passwordConfirm.invalid">Minim 6 caractere, o litera mare, o litera mica, un caracter special</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-btns">
+            <button mat-raised-button color="primary" id="signup-btn" (click)="signup()">Sign Up</button>
+        </div>   
+        
+        <div>
+            <p>
+                * Campuri obligatorii
+            </p>
+        </div>
+            
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200805142614_driver_table.cs" />
+    <Compile Remove="Migrations\20200805142614_driver_table.Designer.cs" />
+    <Compile Remove="Migrations\20200805142739_driver_table.cs" />
+    <Compile Remove="Migrations\20200805142739_driver_table.Designer.cs" />
+    <Compile Remove="Migrations\20200809150049_role.cs" />
+    <Compile Remove="Migrations\20200809150049_role.Designer.cs" />
+    <Compile Remove="Migrations\20200810152419_admin_updated.cs" />
+    <Compile Remove="Migrations\20200810152419_admin_updated.Designer.cs" />
+    <Compile Remove="Migrations\20200811182333_category_update.cs" />
+    <Compile Remove="Migrations\20200811182333_category_update.Designer.cs" />
+    <Compile Remove="Migrations\20200812103649_link_update.cs" />
+    <Compile Remove="Migrations\20200812103649_link_update.Designer.cs" />
+    <Compile Remove="Migrations\20200813155137_test.cs" />
+    <Compile Remove="Migrations\20200813155137_test.Designer.cs" />
+    <Compile Remove="Migrations\20200813194936_test.cs" />
+    <Compile Remove="Migrations\20200813194936_test.Designer.cs" />
+    <Compile Remove="Migrations\20200814182528_quiz_logic_tables.cs" />
+    <Compile Remove="Migrations\20200814182528_quiz_logic_tables.Designer.cs" />
+    <Compile Remove="Migrations\20200814182759_quiz_logic_tables.cs" />
+    <Compile Remove="Migrations\20200814182759_quiz_logic_tables.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

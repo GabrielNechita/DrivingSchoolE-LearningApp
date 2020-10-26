@@ -1,0 +1,100 @@
+<div class="driver-section">
+  <mat-tab-group class="tabs" mat-align-tabs="center">
+    <mat-tab label="Date personale">
+      <ul class="container">
+        <li class="item">
+          <mat-card class="card">
+            <mat-card-header>
+              <div mat-card-avatar class="header-image" *ngIf="!pictureUrl" [ngStyle]="{'background-image':'url('+defaultUrl+')'}"></div>
+              <mat-card-title>{{driver?.user.lastName}} {{driver?.user.firstName}}</mat-card-title>
+              <mat-card-subtitle>Categorie: {{driver?.category?.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Date personale:</p>
+                <mat-list>
+                    <mat-list-item>Email: {{driver?.user.email}}</mat-list-item>
+                    <mat-list-item>Adresa: {{driver?.user.address}}</mat-list-item>
+                    <mat-list-item>Telefon: {{driver?.user.phoneNumber}}</mat-list-item>
+                    <mat-list-item>Zi de nastere: {{driver?.user.birthday | date:'dd.MM.yyyy'}}</mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="openDialog()">Actualizare profil</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+      </ul>
+    </mat-tab>
+    <mat-tab label="Date instructor">
+      <ul class="container">
+        <li class="item">
+          <mat-card class="card">
+            <mat-card-content>
+              <mat-list *ngIf="driver?.instructor">
+                <p>Date instructor:</p>
+                <mat-list-item>Nume: {{driver?.instructor?.user.lastName}} {{driver?.instructor?.user.firstName}}</mat-list-item>
+                <mat-list-item>Telefon: {{driver?.instructor?.user.phoneNumber}}</mat-list-item>
+                <mat-list-item>Email: {{driver?.instructor?.user.email}}</mat-list-item>
+              </mat-list>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button (click)="openInstructorForm()" >{{buttonMessage}}</button>
+            </mat-card-actions>
+          </mat-card>
+        </li>
+        <li class="item" *ngIf="pickInstructor">
+            <mat-card class="card">
+                <p>Pasul 1: Alege o categorie</p>
+
+                <mat-radio-group color="primary" [(ngModel)]="categoryName" (change)="getInstructors()">
+                    <mat-radio-button *ngFor="let category of categories" class="radio" value="{{category?.name}}">{{category?.name}}</mat-radio-button>                   
+                </mat-radio-group>
+
+                <p>Pasul 2: Alege un instructor</p>
+
+                <mat-accordion class="expansion">
+                    <mat-expansion-panel *ngFor="let instr of instructors" (afterExpand)="selectedInstructor = instr">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                         <p> {{instr?.user.lastName}}  {{instr?.user.firstName}} </p>
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <p> Email: {{instr?.user.email}} </p>
+                      <p> Numar de telefon: {{instr?.user.phoneNumber}} </p>
+              
+                      <mat-action-row>
+                        <button mat-stroked-button color="primary" (click)="assignInstructor()">Alege</button>
+                      </mat-action-row>
+                    </mat-expansion-panel>
+                </mat-accordion>                  
+
+            </mat-card>
+        </li>
+      </ul>
+    </mat-tab>
+    <mat-tab label="Rezultate chestionare">
+      <ul class="container">
+        <li class="item">
+          <mat-card class="card">
+            <mat-card-title>
+              Rezultatele chestionarelor:
+            </mat-card-title>
+            <mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-list>
+                <mat-list-item *ngFor="let result of driver?.quizResults; index as i">
+                  <span>{{i + 1}}. </span>
+                  <span> Dificultate: {{result?.difficulty}} </span>
+                  <span> Categorie: {{result?.category?.name}} </span>
+                  <span> Scor: {{result?.score}} </span>     
+                </mat-list-item>
+                <mat-divider></mat-divider>
+              </mat-list>
+            </mat-card-content>
+          </mat-card>
+        </li>
+      </ul>
+    </mat-tab>
+  </mat-tab-group>
+</div>

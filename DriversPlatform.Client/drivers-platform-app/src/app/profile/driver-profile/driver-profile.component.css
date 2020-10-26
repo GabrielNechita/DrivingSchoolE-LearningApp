@@ -1,0 +1,35 @@
+.driver-section{
+    padding-top: 60px;
+    padding-bottom: 55px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+
+    color: white;
+    text-align: center;
+}
+.card {
+    margin-top: 10px;
+    width: 400px;
+  }
+  
+
+.header-image{
+    background-size: cover;
+}
+
+.radio{
+    margin-right: 15px;
+    
+}
+
+span{
+    padding-right: 15px;
+}

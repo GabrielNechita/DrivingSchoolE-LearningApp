@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+app-footer{
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+.quiz-section{
+    padding-top: 60px;
+    padding-bottom: 55px;
+}
+
+.ul-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.item{
+    color: white;
+    text-align: center;
+}
+.card {
+    margin-top: 10px;
+    min-width: 400px;
+  }
+
+  .correctAnswer{
+    color: green;
+    font-weight: bolder;
+}
+
+.wrongAnswer{
+    color: red;
+    font-weight: bolder;
+}

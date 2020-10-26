@@ -1,0 +1,162 @@
+
+<div class="admin-section">
+
+    <mat-tab-group class="tabs" mat-align-tabs="center">
+        <mat-tab label="Clienti">
+
+            <ul class="container">
+                <li class="item">
+                    <mat-card class="card">
+                        <mat-accordion class="expansion">
+                            <mat-expansion-panel *ngFor="let driver of drivers" (afterExpand)="selectedDriver = driver">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                <p> {{driver?.user.lastName}}  {{driver?.user.firstName}} </p>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p> Email: {{driver?.user.email}} </p>
+                            <p> Numar de telefon: {{driver?.user.phoneNumber}} </p>
+                            <p> Data inrolarii: {{driver?.enrollmentDate | date:'dd.MM.yyyy'}} </p>
+                            <p> Categorie: {{driver?.category?.name}} </p>
+                            <p> Instructor: {{driver?.instructor?.user.lastName}} {{driver?.instructor?.user.firstName}}</p>
+                            <mat-action-row>
+                                <button mat-stroked-button color="warn" (click)="deleteDriver()">Sterge acest cont</button>
+                                <button mat-stroked-button [disabled]="driver.hasQuizAccess" (click)="giveQuizAccess(driver.id)">Acces chestionare</button>
+                            </mat-action-row>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </mat-card>
+
+                </li>    
+            </ul>
+
+        </mat-tab>
+        <mat-tab label="Instructori">
+            <ul class="container">
+                <li class="item">
+                    <mat-card class="card">
+                        
+                        <mat-accordion class="expansion">
+                            <mat-expansion-panel *ngFor="let instructor of instructors" (afterExpand)="selectedInstructor = instructor">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                <p> {{instructor?.user.lastName}}  {{instructor?.user.firstName}} </p>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p> Email: {{instructor?.user.email}} </p>
+                            <p> Numar de telefon: {{instructor?.user.phoneNumber}} </p>
+                            <p> Data nasterii: {{instructor?.user.birthday | date:'dd.MM.yyyy'}} </p>
+                            <p> Data angajarii: {{instructor?.hireDate | date:'dd.MM.yyyy'}} </p>
+                            <p> Salar: {{instructor?.salary}} </p>
+                            <p> Categorii: 
+                                <span *ngFor="let category of instructor?.categories"> {{category?.name}}</span>           
+                            </p>                           
+                            <mat-action-row>
+                                <button mat-stroked-button color="primary" (click)="updateInstructor()">Actualizeaza acest cont</button>
+                                <button mat-stroked-button color="warn" (click)="deleteInstructor()">Sterge acest cont</button>
+                            </mat-action-row>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        
+                        <mat-action-row class="add-btn">
+                            <button mat-stroked-button color="primary" (click)="addInstructor()">Adauga instructor nou</button>
+                        </mat-action-row>
+                        
+                    </mat-card>
+
+                </li>    
+            </ul>
+
+
+        </mat-tab>
+
+        <mat-tab label="Intrebari chestionare">
+            <ul class="container">
+                <li class="item">
+                    <app-questions-management></app-questions-management>
+                </li>
+            </ul>
+        </mat-tab>
+
+        <mat-tab label="Categorii">
+            <ul class="container">
+                <li class="item">
+                    <mat-card class="card">
+
+                        <mat-accordion class="expansion">
+                            <mat-expansion-panel *ngFor="let category of categories" (afterExpand)="selectedCategory = category">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                <p> Categoria: {{category?.name}} </p>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <p> Descriere: {{category?.description}} </p>
+                            <mat-action-row>
+                                <button mat-stroked-button color="primary" (click)="updateCategory()">Actualizeaza categoria</button>
+                                <button mat-stroked-button color="warn" (click)="deleteCategory()">Sterge categoria</button>
+                            </mat-action-row>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        
+                        <mat-action-row class="add-btn">
+                            <button mat-stroked-button color="primary" (click)="addCategory()">Adauga categorie noua</button>
+                        </mat-action-row>
+
+                    </mat-card>
+                </li>
+            </ul>
+        </mat-tab>
+
+        <mat-tab label="Resurse">
+            <ul class="container">
+                <li class="item">
+                    <mat-card class="card">
+                        <p>Lista resurse:</p>
+                        <mat-accordion class="expansion">
+                            <mat-expansion-panel *ngFor="let resource of resources" (afterExpand)="selectedResource = resource">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                <p> {{resource?.name}} </p>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <mat-action-row>
+                                <button mat-stroked-button color="warn" (click)="deleteResource()">Sterge</button>
+                            </mat-action-row>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                        <p>Adauga o resursa noua:</p>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Nume resursa</mat-label>
+                                <input matInput [formControl]="resourceName" required>
+                            </mat-form-field>
+                        </div>
+                        <div>
+                            <mat-form-field>
+                                <ngx-mat-file-input 
+                                  placeholder="Adauga resursa"
+                                  accept="application/pdf"
+                                  (change)="uploadFileOnChange($event)"
+                                  required>
+                                </ngx-mat-file-input>
+                                <mat-icon matSuffix>picture_as_pdf</mat-icon>
+                            </mat-form-field>
+                        </div>
+                        
+                        <mat-action-row class="add-btn">
+                            <button mat-stroked-button color="primary" 
+                                [disabled]="resourceFile == null  || !resourceName.valid" 
+                                (click)="addResource()">
+                                Adauga
+                            </button>
+                        </mat-action-row>
+                    </mat-card>
+                </li>
+            </ul>
+        </mat-tab>
+
+    </mat-tab-group>
+</div>
+
+      
+

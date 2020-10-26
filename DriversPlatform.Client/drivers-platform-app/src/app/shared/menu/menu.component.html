@@ -1,0 +1,48 @@
+<div> 
+    <mat-toolbar class="toolbar" color="white" style="z-index: 5">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="toggleSideBar()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+  
+      <a mat-button routerLink="/">
+        <span class="title">A Driving Ace</span>
+      </a>
+      <div fxShow="true" fxHide.lt-md="true">
+        
+        <a mat-button routerLink="/profile" *ngIf="isLoggedin()"> Profil
+          <mat-icon>person</mat-icon>
+        </a>
+        <a mat-button *ngIf="isLoggedin()" routerLink="/resources"> Resurse </a>
+        <a mat-button *ngIf="isDriver" routerLink="/quiz"> Chestionare </a>
+        <a mat-button routerLink="/about"> Despre noi </a>
+        <a mat-button routerLink="/contact"> Contact </a>
+        <a mat-stroked-button class="login_btn" routerLink="/login" *ngIf="!isLoggedin()"> Log In </a>
+        <a mat-stroked-button color="warn" (click)="logout()" *ngIf="isLoggedin()" routerLink="/"> Log Out  </a>
+        
+      </div>
+  
+    </mat-toolbar>
+    <mat-drawer-container style="z-index: 5">
+  
+      <mat-sidenav #sidenav class="side-nav-left" position="start" role="directory" [opened]="opened" fxHide.gt-sm="true">
+        <div class="backdrop" (click)="opened = false"></div>
+        <div class="side-nav-content">
+         
+          <a mat-button routerLink="/profile" *ngIf="isLoggedin()"> Profil
+            <mat-icon>person</mat-icon>
+          </a>
+          <a mat-button *ngIf="isLoggedin()" routerLink="/resources"> Resurse </a>
+          <a mat-button *ngIf="isDriver" routerLink="/quiz"> Chestionare </a>
+          <a mat-button routerLink="/about"> Despre noi </a>
+          <a mat-button routerLink="/contact"> Contact </a>
+          <a mat-button color="warn" class="login_btn" routerLink="/login" *ngIf="!isLoggedin()"> Log In </a>
+          <a mat-button color="warn" (click)="logout()" *ngIf="isLoggedin()" routerLink="/"> Log Out  </a>
+          
+        </div>
+        
+      </mat-sidenav>
+
+    </mat-drawer-container>
+  </div>

@@ -1,0 +1,33 @@
+<div mat-dialog-content>
+    <p>Actualizare profil</p>
+    <mat-form-field>
+      <mat-label>Nume</mat-label>
+      <input matInput [(ngModel)]="data.driver.user.lastName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Prenume</mat-label>
+        <input matInput [(ngModel)]="data.driver.user.firstName">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Adresa</mat-label>
+        <input matInput [(ngModel)]="data.driver.user.address">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Data nasterii</mat-label>
+        <input matInput [matDatepicker]="picker" (click)="picker.open()" [(ngModel)]="data.driver.user.birthday">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Numar telefon</mat-label>
+        <input matInput [(ngModel)]="data.driver.user.phoneNumber">
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Renunta</button>
+    <button mat-button (click)="update()">Actualizare</button>
+  </div>
